@@ -2102,3 +2102,17 @@ Media Queries
 	}
 
 }
+
+
+/* Demo & Download buttons
+--------------------------------------------- */
+
+.demo-download
+{
+	margin-bottom: 2.6rem;
+}
+
+.demo-download :first-child
+{
+	margin-right: 1rem;
+}
