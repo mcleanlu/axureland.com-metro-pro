@@ -22,6 +22,9 @@ function metro_google_fonts() {
 	wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css?family=Oswald:400', array(), CHILD_THEME_VERSION );
 }
 
+/** Display author box on single posts */
+add_filter( 'get_the_author_genesis_author_box_single', '__return_true' );
+
 //* Enqueue Backstretch script and prepare images for loading
 add_action( 'wp_enqueue_scripts', 'metro_enqueue_scripts' );
 function metro_enqueue_scripts() {
