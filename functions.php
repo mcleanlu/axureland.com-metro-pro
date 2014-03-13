@@ -142,3 +142,37 @@ genesis_register_sidebar( array(
 	'name'        => __( 'After Entry', 'metro' ),
 	'description' => __( 'This is the after entry section.', 'metro' ),
 ) );
+
+
+//* Change Title in author box
+add_filter( 'genesis_author_box', 'sk_author_box' );
+function sk_author_box() {
+ 
+	// Author's Gravatar image
+	$gravatar_size = apply_filters( 'genesis_author_box_gravatar_size', 100, $context );
+	$gravatar      = get_avatar( get_the_author_meta( 'email' ), $gravatar_size );
+ 
+	// Author's name
+	$name = get_the_author();
+	$title = get_the_author_meta( 'title' );
+	if( !empty( $title ) )
+		$name .= ', ' . $title;
+ 	$link = get_the_author_meta( 'user_url' );
+
+	// Author's Biographical info
+	$description   = wpautop( get_the_author_meta( 'description' ) );
+ 
+	// Build Author box output
+	$output = '';
+	$output .= '<section class="author-box" itemtype="http://schema.org/Person" itemscope="itemscope" itemprop="author">';
+	$output .= $gravatar;
+	$output .= '<h3 class="author-box-title">About the author</span></h3>';
+	$output .= '<div itemprop="description" class="author-box-content">' . $description . '</div>';
+	if (get_the_author_meta( 'user_url' ))
+	{
+		$output .= '<div class="custom-link"><br><p>Website: <a href="'.$link.'" target="_blank">'. $link .'</a></p></div>';
+	}
+	$output .= '</section>';
+	return $output;
+ 
+}
