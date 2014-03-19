@@ -176,3 +176,19 @@ function sk_author_box() {
 	return $output;
  
 }
+
+/* Jetpack Share Buttons */
+
+add_action( 'init', 'custom_init', 11 );
+function custom_init(){
+   
+    // if sharing_display() function does not exist, return
+    if( ! function_exists( 'sharing_display' ) )
+        return;
+     
+    // remove the callback sharing_display() for the 
+    // 'the_content' and 'the_excerpt' filters.
+    remove_filter( 'the_content', 'sharing_display', 19 );
+    remove_filter( 'the_excerpt', 'sharing_display', 19 );
+     
+}

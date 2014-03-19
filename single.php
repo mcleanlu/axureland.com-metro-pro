@@ -1,5 +1,6 @@
 <?php
 
+/* Demo & Download Buttons*/
 function add_acf()
 {
 
@@ -18,6 +19,16 @@ function add_acf()
 }
 
 add_action( 'genesis_entry_content', 'add_acf' );
+
+add_action( 'genesis_entry_footer', 'show_share_buttons' );
+function show_share_buttons(){
+     
+  if ( function_exists( 'sharing_display' ) ) {
+ echo sharing_display();
+ 
+  }
+     
+}
 
 //* Run the Genesis loop
 genesis();
