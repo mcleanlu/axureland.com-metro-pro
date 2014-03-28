@@ -141,6 +141,7 @@ genesis_register_sidebar( array(
 	'id'          => 'after-entry',
 	'name'        => __( 'After Entry', 'metro' ),
 	'description' => __( 'This is the after entry section.', 'metro' ),
+<<<<<<< HEAD
 ) );
 
 
@@ -191,4 +192,20 @@ function custom_init(){
     remove_filter( 'the_content', 'sharing_display', 19 );
     remove_filter( 'the_excerpt', 'sharing_display', 19 );
      
+}
+
+//Login URL hook
+
+function kd_login_page( $login_url, $redirect ) {
+    return get_bloginfo( 'url' ).'/getin';
+    return $new_login_url;
+}
+add_filter( 'login_url', 'kd_login_page', 10, 2 );
+
+//Remove author box in bbpress
+
+add_action ('genesis_entry_footer', 'nabm_remove_author_box' );
+function nabm_remove_author_box() {
+       remove_action( 'genesis_after_entry', 'genesis_do_author_box_single', 8 );
+    remove_action( 'genesis_after_post', 'genesis_do_author_box_single', 8 );
 }
