@@ -197,7 +197,7 @@ function custom_init(){
 //Login URL hook
 
 function kd_login_page( $login_url, $redirect ) {
-    return get_bloginfo( 'url' ).'/getin';
+    return get_bloginfo( 'url' ).'/login';
     return $new_login_url;
 }
 add_filter( 'login_url', 'kd_login_page', 10, 2 );
