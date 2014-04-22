@@ -398,24 +398,4 @@ if (function_exists('bp_is_current_component')) {
 
 // To remove the entry meta under bbpress or buddypress
 
-// BuySellAds tracking code
 
-    add_action(‘genesis_before’, ‘buysellads’);
-    function buysellads() { ?>
-
-    <!-- BuySellAds Ad Code -->
-	<script type="text/javascript">
-	(function(){
-	  var bsa = document.createElement('script');
-		 bsa.type = 'text/javascript';
-		 bsa.async = true;
-		 bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
-	  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-	})();
-	</script>
-	<!-- End BuySellAds Ad Code -->
-
-    <?php
-    }
-
-// BuySellAds tracking code
