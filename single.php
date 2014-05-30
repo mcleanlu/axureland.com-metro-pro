@@ -15,6 +15,11 @@ function add_acf()
 		$data .= '<a href="' . get_field('download') . '" target="_blank"><button>Download</button></a>';
 	}
 	
+	if(get_field('website'))
+	{
+		$data .= '<a href="http://' . get_field('website') . '" target="_blank"><button>Website</button></a>';
+	}
+	
 	echo '</div>' . $data;
 }
 
