@@ -2144,3 +2144,7 @@ Media Queries
 	text-transform: uppercase;
 	font-size: 14px!important;
 }
+
+.highlight {
+    background-color: #ffffc1;
+}
