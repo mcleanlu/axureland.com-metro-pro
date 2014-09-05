@@ -881,20 +881,47 @@ function contributor_remove_meta_boxes(){
 }
 
 
-//add_action('init','change_publish_axure');
+add_action('wp_footer','remove_click_menu');
 
-function change_publish_axure(){
-    $role = get_role( 'c_contributor_pro' );
-    $role->add_cap( 'delete_published_ai1ec_events' );
-
+function remove_click_menu(){?>
+<style>#wp-admin-bar-clickystats{display:none;}</style>
+<?php
 }
 
-//add_action('show_user_profile', 't_custom_user_profile_fields');
 
-function t_custom_user_profile_fields($user){
+//retrive password email
 
-  if($user->ID==2496){
-    print_r(get_role( 'c_contributor' ));
-  }
+function axureland_retrieve_password_message_filter($old_message, $key)
+{
+    if ( strpos( $_POST['user_login'], '@' ) )
+    {
+        $user_data = get_user_by( 'email', trim( $_POST['user_login'] ) );
 
+    }
+    else
+    {
+        $login = trim($_POST['user_login']);
+        $user_data = get_user_by('login', $login);
+    }
+
+    $user_login = $user_data->user_login;
+      $text = '<p>Someone requested that the password be reset for the following account: <a href="'.get_bloginfo("url").'">'.get_bloginfo("url").'</a></p>
+         Username: %username%<br/>
+        <p>If this was a mistake, just ignore this email and nothing will happen.</p>
+         To reset your password, visit the following address:<br/>
+          <a href="%reseturl%">%reseturl%</a>';
+    $reset_url = network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login');
+    $message .= str_replace("%reseturl%",$reset_url,(str_replace("%username%",$user_login,$text))); //. "\r\n";
+
+
+    return $message;
 }
+
+add_filter ( 'retrieve_password_message', 'axureland_retrieve_password_message_filter', 10, 2 );
+
+add_filter( 'wp_mail_content_type', 'set_content_type' );
+    function set_content_type( $content_type )
+    {
+        return 'text/html';
+    }
+
