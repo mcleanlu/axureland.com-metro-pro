@@ -938,7 +938,7 @@ Site Header
 .title-area {
 	float: left;
 	padding: 0;
-	width: 360px;
+	width: 340px;
 }
 
 .site-title {
@@ -1001,7 +1001,7 @@ Site Header
 
 .site-header .widget-area {
 	float: right;
-	width: 664px;
+	width: 728px;
 }
 
 .site-header .search-form {
@@ -2115,4 +2115,36 @@ Media Queries
 .demo-download :first-child
 {
 	margin-right: 1rem;
+}
+
+/* Calendar space
+--------------------------------------------- */
+
+.categories-top .ai1ec-agenda-widget-view
+{
+	margin-bottom: 50px!important;
+	max-width: none;
+}
+
+.timely .ai1ec-btn,
+.timely .ai1ec-btn-sm,
+.timely .ai1ec-btn-xs,
+.ai1ec-calendar-toolbar,
+.ai1ec-agenda-widget-view .ai1ec-event > a,
+.ai1ec-agenda-widget-view .ai1ec-month, .ai1ec-agenda-view .ai1ec-month,
+.ai1ec-agenda-widget-view .ai1ec-date-title, .ai1ec-agenda-view .ai1ec-date-title
+{
+	border-radius: 0;
+}
+
+.ai1ec-btn-default
+{
+	margin-top: 20px!important;
+	padding: 10px 16px!important;
+	text-transform: uppercase;
+	font-size: 14px!important;
+}
+
+.highlight {
+    background-color: #ffffc1;
 }
